@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Keranjang Belanja - H&N</title>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white">
+        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold text-gray-900">H&N T-Shirt Shop</h1>
+                <a href="index.html" class="text-gray-600">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Daftar Pakaian -->
+    <section class="py-8">
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Pilihan Pakaian</h2>
+
+            <div id="products" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <!-- Produk akan dimuat melalui JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Keranjang -->
+    <section class="py-8 bg-gray-100">
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Keranjang Belanja</h2>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <ul id="cart-items" class="divide-y">
+                    <!-- Item keranjang akan dimuat melalui JavaScript -->
+                </ul>
+                <div class="flex justify-between mt-4">
+                    <span class="text-lg font-semibold">Total:</span>
+                    <span id="cart-total" class="text-lg font-semibold">Rp 0</span>
+                </div>
+                <button id="checkout-btn" class="mt-4 bg-red-600 text-white py-2 px-4 rounded-sm w-full">Checkout</button>
+            </div>
+        </div>
+    </section>
+    <script>
+        const products = [
+            { name: "T-Shirt Basic", price: 100000, image: "https://i.ibb.co.com/WWKCrTcV/basic.jpg" },
+            { name: "T-Shirt Casual", price: 120000, image: "https://i.ibb.co.com/Z6g58nSc/casual.jpg" },
+            { name: "T-Shirt Sporty", price: 130000, image: "https://i.ibb.co.com/DHh398R7/sporty.jpg" },
+            { name: "T-Shirt Premium", price: 150000, image: "https://i.ibb.co.com/rR3T8Vxp/prem.jpg" },
+            { name: "T-Shirt Graphic", price: 110000, image: "https://i.ibb.co.com/5PhDh6v/graph.jpg" },
+            { name: "T-Shirt Stripe", price: 115000, image: "https://i.ibb.co.com/gMF2Tn9v/stripe.jpg" },
+            { name: "T-Shirt V-Neck", price: 125000, image: "https://i.ibb.co.com/JjqxKBtB/vneck.jpg" },
+            { name: "T-Shirt Slim Fit", price: 140000, image: "https://i.ibb.co.com/xK8KLYKt/slim.jpg" },
+            { name: "T-Shirt Comfort", price: 135000, image: "https://i.ibb.co.com/x0GmrLC/cmfrt.jpg" },
+            { name: "T-Shirt Hoodie", price: 160000, image: "https://i.ibb.co.com/67W3z8pF/hoodie.jpg" },
+            { name: "T-Shirt Oversize", price: 145000, image: "https://i.ibb.co.com/jv154Gwf/ovrsz.jpg" },
+            { name: "T-Shirt Long Sleeve", price: 155000, image: "https://i.ibb.co.com/4Z9KSWG9/longsl.jpg" }
+        ];
+
+        const cart = [];
+
+        // Render produk ke halaman
+        function renderProducts() {
+            const productContainer = document.getElementById("products");
+            productContainer.innerHTML = "";
+            products.forEach((product, index) => {
+                productContainer.innerHTML += `
+                    <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                        <h3 class="text-xl font-semibold text-gray-900">${product.name}</h3>
+                        <p class="text-gray-500">Rp ${product.price.toLocaleString()}</p>
+                        <button class="mt-4 bg-red-600 text-white py-2 px-4 rounded-sm w-full" onclick="addToCart(${index})">Tambah ke Keranjang</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Render keranjang ke halaman
+        function renderCart() {
+            const cartItems = document.getElementById("cart-items");
+            const cartTotal = document.getElementById("cart-total");
+            cartItems.innerHTML = "";
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <li class="flex justify-between py-2">
+                        <div class="flex items-center">
+                            <span class="font-medium">${item.name}</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="font-medium">Rp ${item.price.toLocaleString()}</span>
+                            <button class="ml-4 text-red-600" onclick="removeFromCart(${index})">Hapus</button>
+                        </div>
+                    </li>
+                `;
+            });
+
+            cartTotal.textContent = `Rp ${total.toLocaleString()}`;
+        }
+
+        // Tambah item ke keranjang
+        function addToCart(index) {
+            cart.push(products[index]);
+            renderCart();
+        }
+
+        // Hapus item dari keranjang
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        // Checkout button event
+        document.getElementById("checkout-btn").addEventListener("click", () => {
+            window.location.href = "hnstr4.html"; // Go to the checkout page
+        });
+
+        // Render awal
+        renderProducts();
+        renderCart();
+    </script>
+
+</body>
+</html>

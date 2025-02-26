@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Testimoni - H&N</title>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-white">
+        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold text-gray-900">H&N T-Shirt Shop</h1>
+                <a href="index.html" class="text-gray-600">Kembali ke Beranda</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Testimoni -->
+    <section class="py-8">
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Testimoni Pelanggan</h2>
+
+            <div class="space-y-6">
+                <!-- Testimoni 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.ibb.co.com/zW0yhL20/ajg.jpg" alt="Customer" class="w-10 h-10 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Yushan Thoriq</p>
+                            <p class="text-gray-500 text-sm">2 hari yang lalu</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "Produk sangat berkualitas, pengiriman cepat, dan customer service yang ramah. Sungguh pengalaman belanja yang menyenangkan!"
+                    </p>
+                </div>
+
+                <!-- Testimoni 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.ibb.co.com/SDCtRPj5/sae.jpg" alt="Customer" class="w-10 h-10 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Ira Herlina</p>
+                            <p class="text-gray-500 text-sm">3 hari yang lalu</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "T-Shirt yang saya beli sangat nyaman dipakai, bahan berkualitas, dan desainnya sangat stylish. Sangat puas!"
+                    </p>
+                </div>
+
+                <!-- Testimoni 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://i.ibb.co.com/GfXydHB5/vick.jpg" alt="Customer" class="w-10 h-10 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Vicky Firmansyah</p>
+                            <p class="text-gray-500 text-sm">1 minggu yang lalu</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">
+                        "Harga yang sangat terjangkau dengan kualitas yang luar biasa. Saya akan kembali membeli lagi!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Komentar -->
+    <section class="py-8 bg-gray-100">
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-6">Berikan Komentar Anda</h2>
+
+            <form action="#" method="POST" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Nama Anda</label>
+                    <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-50" required>
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email Anda</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-50" required>
+                </div>
+
+                <div>
+                    <label for="comment" class="block text-sm font-medium text-gray-700">Komentar Anda</label>
+                    <textarea id="comment" name="comment" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-600 focus:ring focus:ring-red-600 focus:ring-opacity-50" required></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-3 focus:ring-red-600 focus:ring-opacity-50">
+                    Kirim Komentar
+                </button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
